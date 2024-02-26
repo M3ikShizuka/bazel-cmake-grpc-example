@@ -1,0 +1,24 @@
+syntax = "proto3";
+
+package myroute;
+
+// Interface exported by the server.
+service MyRoute {
+  // Simple RPC.
+  rpc SetScore(ScoreRequest) returns (ScoreReply) {}
+
+  // Bidirectional streaming RPC.
+  rpc RouteChat(stream RouteMessage) returns (stream RouteMessage) {}
+}
+
+message ScoreRequest {
+  int32 score = 1;
+}
+
+message ScoreReply {
+  string message = 1;
+}
+
+message RouteMessage {
+  string message = 1;
+}

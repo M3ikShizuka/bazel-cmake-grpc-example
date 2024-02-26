@@ -1,0 +1,26 @@
+###############################################################################
+# Bazel now uses Bzlmod by default to manage external dependencies.
+# Please consider migrating your external dependencies from WORKSPACE to MODULE.bazel.
+#
+# For more details, please check https://github.com/bazelbuild/bazel/issues/18958
+###############################################################################
+
+##################################################################################
+#### Golang
+##################################################################################
+load("@rules_proto_grpc_go//:defs.bzl", "go_proto_compile")
+
+go_proto_compile(
+    name = "person_go_proto",
+    protos = ["@rules_proto_grpc_example_protos//:person_proto"],
+)
+
+go_proto_compile(
+    name = "place_go_proto",
+    protos = ["@rules_proto_grpc_example_protos//:place_proto"],
+)
+
+go_proto_compile(
+    name = "thing_go_proto",
+    protos = ["@rules_proto_grpc_example_protos//:thing_proto"],
+)
